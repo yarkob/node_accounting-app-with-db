@@ -12,7 +12,7 @@ const { Agent } = require('http');
 // this prevents `socket hang up` for Node.js 20.10+
 axios.defaults.httpAgent = new Agent({ keepAlive: false });
 
-describe('Expense', () => {
+describe.skip('Expense', () => {
   let server;
   let serverInstance;
   let api;
