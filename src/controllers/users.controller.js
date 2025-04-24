@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const usersService = require('../services/users.service');
 
 module.exports.getUsers = async (req, res) => {
@@ -36,7 +34,6 @@ module.exports.createUser = async (req, res) => {
   try {
     res.status(201).send(await usersService.createUser(name));
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 };

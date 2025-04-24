@@ -1,12 +1,6 @@
-/* eslint-disable no-console */
-
 const {
   models: { User },
 } = require('../models/models');
-
-// const setInitUsers = () => {
-//   users = [];
-// };
 
 const getUsers = async () => {
   return User.findAll();
@@ -16,8 +10,8 @@ const getUserById = async (id) => {
   return User.findByPk(id);
 };
 
-const deleteUser = (id) => {
-  User.destroy({
+const deleteUser = async (id) => {
+  await User.destroy({
     where: {
       id,
     },
@@ -29,15 +23,14 @@ const createUser = async (name) => {
 };
 
 const updateUser = async ({ id, name }) => {
-  const todo = await getUserById(id);
+  const user = await getUserById(id);
 
-  Object.assign(todo, { name });
+  Object.assign(user, { name });
 
-  return todo;
+  return user;
 };
 
 module.exports = {
-  // setInitUsers,
   getUsers,
   getUserById,
   deleteUser,
